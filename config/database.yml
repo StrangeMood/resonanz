@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  database: resonanz_development
+  pool: 5
+  username: postgres
+  password:
+
+test:
+  database: resonanz_test
+
+production:
+  database: resonanz_production
+
