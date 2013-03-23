@@ -1,5 +1,9 @@
 Resonanz::Application.routes.draw do
-  get 'create_identity' => 'sessions#create', as: 'create_identity'
+  scope '(:locale)', locale: /en|ru/ do
+    get 'create_identity' => 'sessions#create', as: 'create_identity'
 
-  root to: 'conversations#index'
+    root to: 'conversations#index'
+
+    resources :conversations
+  end
 end

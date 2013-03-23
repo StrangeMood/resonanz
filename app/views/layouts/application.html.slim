@@ -6,5 +6,8 @@ html
     = javascript_include_tag 'application'
 
   body
-    p Сегодня вы не кто иной, как #{current_user.name}.
+    p
+      = link_to t('layout.change_locale'), url_for(locale: I18n.locale == :ru ? :en : :ru)
+      | &nbsp
+      = t('layout.name', user_name: current_user.name)
     = yield

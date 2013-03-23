@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 1.0.1'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'russian'
+
 group :development do
   gem 'thin'
 end

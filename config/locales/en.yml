@@ -20,4 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layout:
+    name: Your current name is %{user_name}.
+    change_locale: Change language to Russian.
+
+  conversations:
+    greeting: A lot of interesting things will be here. Stay tuned...
