@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
   before_filter :ensure_user
   before_filter :set_locale
 
@@ -14,10 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options = {})
-    I18n.locale != I18n.default_locale ? {:locale => I18n.locale} : {}
+    {locale: I18n.locale != I18n.default_locale ? I18n.locale : nil}
   end
-
-  rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')

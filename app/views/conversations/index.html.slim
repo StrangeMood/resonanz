@@ -2,4 +2,4 @@ h1= t('conversations.greeting')
 
 ul
   - conversations.each do |c|
-    li= c.id
+    li= link_to c.id, c
