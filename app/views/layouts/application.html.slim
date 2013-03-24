@@ -1,11 +1,11 @@
 doctype html
-html
+html[ ng-app='' ]
   head
     title Resonanz
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
 
-  body
+  body[ng-init='currentUser=#{UserSerializer.new(current_user).to_json}']
     p
       = link_to t('layout.change_locale'), url_for(locale: I18n.locale == :ru ? :en : nil)
       | &nbsp

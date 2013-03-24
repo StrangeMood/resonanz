@@ -1,1 +1,14 @@
-h1 Conversation Numba #{conversation.id}
+div[ng-controller='ConversationCtrl']
+  h1 Conversation Numba #{conversation.id}
+
+  h2 There is some messages here. ({{messages.length}})
+
+  - current_messages = ActiveModel::ArraySerializer.new(conversation.messages).to_json
+  ul[ng-init="messages=#{current_messages}; createUrl='#{conversation_messages_path(conversation)}'"]
+    li[ng-repeat='message in messages']
+      strong {{message.author.name}}:&nbsp
+      | {{message.text}}
+
+  form[ng-submit='addMessage()']
+    textarea[ng-model='message.text' rows='4']
+    input[type='submit' value='Add Message']

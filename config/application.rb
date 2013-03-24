@@ -11,6 +11,7 @@ module Resonanz
     config.autoload_paths += %W(#{config.root}/lib)
 
     config.active_record.schema_format = :sql
+    config.active_record.include_root_in_json = false
 
     config.time_zone = 'Moscow'
 

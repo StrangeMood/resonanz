@@ -14,11 +14,10 @@ end
 gem 'cancan'
 gem 'russian'
 gem 'decent_exposure'
+gem 'active_model_serializers'
 
 # view
 gem 'slim'
-gem 'jquery-rails'
-gem 'jbuilder', '~> 1.0.1'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 

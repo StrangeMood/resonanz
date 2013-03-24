@@ -3,5 +3,19 @@ class MessagesController < ApplicationController
 
   expose(:conversation, strategy: VerifiableStrategy)
   expose(:messages, ancestor: :conversation)
-  expose(:message)
+  expose(:message, attributes: :create_params)
+
+  def create
+    message.author ||= current_user
+
+    message.save
+    render json: message
+  end
+
+  private
+
+  def create_params
+    params.require(:message).permit(:text)
+  end
+
 end
