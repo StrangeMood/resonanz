@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Resonanz::Application.config.session_store :encrypted_cookie_store, key: '_resonanz_session'
+Resonanz::Application.config.session_store :encrypted_cookie_store, key: 'resonanz_session'

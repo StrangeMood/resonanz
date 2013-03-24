@@ -29,7 +29,9 @@ GEM
     atomic (1.0.1)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
+    cancan (1.6.8)
     daemons (1.1.9)
+    decent_exposure (2.1.0)
     erubis (2.7.0)
     eventmachine (0.12.10)
     execjs (1.4.0)
@@ -51,6 +53,8 @@ GEM
     multi_json (1.7.1)
     pg (0.14.1)
     polyglot (0.3.3)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -113,9 +117,12 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
+  cancan
+  decent_exposure
   jbuilder (~> 1.0.1)
   jquery-rails
   pg
+  quiet_assets
   rails (= 4.0.0.beta1)
   russian
   sass-rails (~> 4.0.0.beta1)
