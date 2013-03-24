@@ -1,4 +1,6 @@
 class ConversationsController < ApplicationController
-  expose(:conversations) { Conversation.accessible_by(current_ability) }
+  respond_to :json, :html
+
+  expose(:conversations, strategy: VerifiableStrategy)
   expose(:conversation)
 end

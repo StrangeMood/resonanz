@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups(assets: %w(development test)))
 module Resonanz
   class Application < Rails::Application
 
+    config.autoload_paths += %W(#{config.root}/lib)
+
     config.active_record.schema_format = :sql
 
     config.time_zone = 'Moscow'

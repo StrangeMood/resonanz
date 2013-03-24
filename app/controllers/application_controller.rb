@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
     I18n.locale != I18n.default_locale ? {:locale => I18n.locale} : {}
   end
 
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
   private
 
   def set_locale

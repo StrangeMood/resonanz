@@ -4,6 +4,8 @@ Resonanz::Application.routes.draw do
 
     root to: 'conversations#index'
 
-    resources :conversations
+    resources :conversations do
+      resources :messages
+    end
   end
 end
