@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  include Concerns::HaikuNames
-  include Concerns::ApiPartialPath
+  include HaikuNames
+  include ApiPartialPath
 
   before_create :ensure_token
   before_save :ensure_name
