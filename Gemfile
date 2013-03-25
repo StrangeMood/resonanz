@@ -14,7 +14,7 @@ end
 gem 'cancan'
 gem 'russian'
 gem 'decent_exposure'
-gem 'active_model_serializers'
+gem 'jbuilder'
 
 # view
 gem 'slim'

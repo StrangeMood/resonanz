@@ -27,6 +27,16 @@ class ApplicationController < ActionController::Base
     strategy DecentExposure::StrongParametersStrategy
   end
 
+  # open this method for models serialisation to json
+  def render_for_api model
+    if model.respond_to?(:each)
+      "[#{model.map(&method(:render_for_api)).join(',')}]"
+    else
+      render_to_string(model)
+    end
+  end
+  helper_method :render_for_api
+
   private
 
   def set_locale

@@ -5,7 +5,7 @@ html[ ng-app='' ]
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
 
-  body[ng-init='currentUser=#{UserSerializer.new(current_user).to_json}']
+  body[ng-init='currentUser=#{render_for_api(current_user)}']
     p
       = link_to t('layout.change_locale'), url_for(locale: I18n.locale == :ru ? :en : nil)
       | &nbsp
