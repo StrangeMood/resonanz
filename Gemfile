@@ -28,3 +28,6 @@ group :development do
   gem 'quiet_assets'
 end
 
+group :test do
+  gem 'minitest-reporters', '>= 0.5.0' # makes RubyMine happy
+end

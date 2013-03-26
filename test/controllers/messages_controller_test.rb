@@ -21,13 +21,14 @@ class MessagesControllerTest < ActionController::TestCase
   end
 
   test 'publish new message to Redis' do
-    broadcast_message = nil
-    Resonanz::Redis.class.send(:define_method, :publish) do |channel, message|
-      broadcast_message = message
+    Resonanz::Redis = MiniTest::Mock.new
+    Resonanz::Redis.expect(:publish, nil) do |channel, message|
+      message == @controller.render_for_api(Message.first) &&
+      channel == "conversation/#{@conversation.to_param}"
     end
 
     post :create, format: 'json', message: {text: 'Hello World'}, conversation_id: @conversation.id
 
-    assert_equal response.body, broadcast_message
+    assert Resonanz::Redis.verify
   end
 end
