@@ -8,8 +8,13 @@ class MessagesController < ApplicationController
   def create
     message.author ||= current_user
 
-    message.save
-    render json: message
+    if message.save
+      json_message = render_for_api(message)
+      channel = "conversation/#{conversation.to_param}"
+      Resonanz::Redis.publish(channel, json_message)
+
+      render text: json_message
+    end
   end
 
   private

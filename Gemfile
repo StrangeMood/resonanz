@@ -16,6 +16,8 @@ gem 'russian'
 gem 'decent_exposure'
 gem 'jbuilder'
 
+gem 'redis'
+
 # view
 gem 'slim'
 

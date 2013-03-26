@@ -1,4 +1,4 @@
-development:
+development: &defaults
   adapter: postgresql
   host: localhost
   encoding: unicode
@@ -8,6 +8,7 @@ development:
   password:
 
 test:
+  <<: *defaults
   database: resonanz_test
 
 production:
