@@ -17,6 +17,7 @@ class MessagesControllerTest < ActionController::TestCase
     post :create, format: 'json', message: {text: 'Hello World'}, conversation_id: @conversation.id
 
     assert response.success?
+    assert_equal response.body, @controller.render_for_api(Message.first)
   end
 
   test 'publish new message to Redis' do
