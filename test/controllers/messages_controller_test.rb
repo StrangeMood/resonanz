@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MessagesControllerTest < ActionController::TestCase
 
-  def setup
+  setup do
     @conversation = Conversation.create
     @user = user = User.create
 
