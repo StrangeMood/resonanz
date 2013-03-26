@@ -30,5 +30,6 @@ class MessagesControllerTest < ActionController::TestCase
     post :create, format: 'json', message: {text: 'Hello World'}, conversation_id: @conversation.id
 
     assert Resonanz::Redis.verify
+    assert false
   end
 end
