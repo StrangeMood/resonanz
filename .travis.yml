@@ -7,3 +7,4 @@ script:
   - RAILS_ENV=test bundle exec rake --trace test
 before_script:
   - psql -c 'create database resonanz_test' -U postgres
+  - RAILS_ENV=test bundle exec rake --trace db:structure:load
