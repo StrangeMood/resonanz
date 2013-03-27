@@ -15,7 +15,4 @@
 /log/*.log
 /tmp
 
-# ignore bower dependencies
-/vendor/assets/components
-
 .idea
