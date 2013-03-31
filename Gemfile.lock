@@ -37,6 +37,8 @@ GEM
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    foreigner (1.4.0)
+      activerecord (>= 3.0.0)
     hashie (2.0.3)
     hike (1.2.1)
     i18n (0.6.4)
@@ -127,6 +129,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   cancan
   decent_exposure
+  foreigner
   jbuilder
   minitest-reporters (>= 0.5.0)
   pg

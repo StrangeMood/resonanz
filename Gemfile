@@ -4,6 +4,7 @@ gem 'rails', '4.0.0.beta1'
 
 # database
 gem 'pg'
+gem 'foreigner'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0.beta1'

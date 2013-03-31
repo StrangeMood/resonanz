@@ -45,4 +45,9 @@ ActiveRecord::Schema.define(version: 20130324095325) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "messages", "conversations", :name => "messages_conversation_id_fk", :dependent => :delete
+
+  add_foreign_key "user_conversations", "conversations", :name => "user_conversations_conversation_id_fk", :dependent => :delete
+  add_foreign_key "user_conversations", "users", :name => "user_conversations_user_id_fk", :dependent => :delete
+
 end

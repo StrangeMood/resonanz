@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   before_create :ensure_token
   before_save :ensure_name
 
-  has_many :user_conversations
+  has_many :user_conversations, dependent: :destroy
   has_many :conversations, through: :user_conversations
 
   private

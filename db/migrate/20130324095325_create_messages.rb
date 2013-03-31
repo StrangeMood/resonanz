@@ -5,6 +5,8 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :author_id
       t.integer :conversation_id
 
+      t.foreign_key :conversations, dependent: :delete
+
       t.timestamps
     end
   end

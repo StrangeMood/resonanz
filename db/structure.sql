@@ -96,7 +96,7 @@ ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 --
 
 CREATE TABLE schema_migrations (
-    version character varying(255) NOT NULL
+    version character varying NOT NULL
 );
 
 
@@ -139,8 +139,8 @@ ALTER SEQUENCE user_conversations_id_seq OWNED BY user_conversations.id;
 
 CREATE TABLE users (
     id integer NOT NULL,
-    name character varying(255),
-    token character varying(255),
+    name character varying,
+    token character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -251,6 +251,30 @@ CREATE INDEX index_user_conversations_on_user_id ON user_conversations USING btr
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: messages_conversation_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT messages_conversation_id_fk FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE;
+
+
+--
+-- Name: user_conversations_conversation_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY user_conversations
+    ADD CONSTRAINT user_conversations_conversation_id_fk FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE;
+
+
+--
+-- Name: user_conversations_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY user_conversations
+    ADD CONSTRAINT user_conversations_user_id_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 
 
 --
