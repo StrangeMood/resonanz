@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    @current_user ||= User.find_by(id: cookies.signed[:auth_token]) if cookies[:auth_token]
+    @current_user ||= User.find_by(id: cookies.signed[:id]) if cookies[:id]
   end
 
   def default_url_options(options = {})

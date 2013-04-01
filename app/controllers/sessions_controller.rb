@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.create
-    cookies.permanent.signed[:auth_token] = user.id
+    cookies.permanent.signed[:id] = user.id
 
     redirect_to(root_path)
   end

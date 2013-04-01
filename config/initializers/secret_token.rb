@@ -9,4 +9,15 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Resonanz::Application.config.secret_key_base = '24d023f4ae30e70da96ab6b49f22fb7a72743ff45d86c3bef5a4b2e91cab2b7d2d516cf267dc74c1790964e3e6909318b2029a3585d9fccf36bfda2681f24d97'
+Resonanz::Application.config.secret_key_base = 'SOME_SECRET_HERE'
+
+# set Tornado::SignedCookieJar
+signed_cookie_jar = Module.new do
+  def signed
+    @signed ||= Tornado::SignedCookieJar.new(self, @key_generator, @options)
+  end
+end
+
+ActionDispatch::Cookies::PermanentCookieJar.send(:prepend, signed_cookie_jar)
+ActionDispatch::Cookies::EncryptedCookieJar.send(:prepend, signed_cookie_jar)
+ActionDispatch::Cookies::CookieJar.send(:prepend, signed_cookie_jar)
