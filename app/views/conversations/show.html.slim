@@ -4,7 +4,7 @@ div[ng-controller='ConversationCtrl']
   h2 There is some messages here. ({{messages.length}})
 
   - current_messages = render_for_api(conversation.messages)
-  ul[ng-init="messages=#{current_messages}; createUrl='#{conversation_messages_path(conversation)}'"]
+  ul[ng-init="messages=#{current_messages}; conversationPath='#{conversation_path(conversation)}'"]
     li[ng-repeat='message in messages']
       strong {{message.author.name}}:&nbsp
       | {{message.text}}

@@ -1,13 +1,15 @@
 function ConversationCtrl($scope, $http) {
+
+  var ws = new WebSocket('ws://localhost:8888' + window.location.pathname)
+
+  ws.onmessage = function(evt) {
+    $scope.$apply(function() {
+      $scope.messages.push(JSON.parse(evt.data))
+    })
+  };
+
   $scope.addMessage = function() {
-    var newMessage = {text: $scope.message.text, author: $scope.currentUser, delivered: false}
-
-    $http({method: 'POST', url: $scope.createUrl, data: {message: newMessage}}).
-      success(function(data, status, headers, config) {
-        newMessage.delivered = true
-      })
-
-    $scope.messages.push(newMessage)
+    ws.send(JSON.stringify({text: $scope.message.text}))
     $scope.message.text = ''
   }
 }
