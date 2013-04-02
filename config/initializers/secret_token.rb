@@ -21,3 +21,16 @@ end
 ActionDispatch::Cookies::PermanentCookieJar.send(:prepend, signed_cookie_jar)
 ActionDispatch::Cookies::EncryptedCookieJar.send(:prepend, signed_cookie_jar)
 ActionDispatch::Cookies::CookieJar.send(:prepend, signed_cookie_jar)
+
+# unescaped cookies
+class << Rack::Utils
+  alias :origin_set_cookie_header! set_cookie_header!
+
+  def set_cookie_header!(header, *args)
+    return_value = origin_set_cookie_header!(header, *args)
+
+    header["Set-Cookie"] = unescape(header["Set-Cookie"] || '')
+
+    return_value
+  end
+end
