@@ -1,9 +1,13 @@
+import logging
 from sqlalchemy import create_engine, Integer, Column, Text, ForeignKey, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, backref
 from sqlalchemy.orm.events import orm
 
-engine = create_engine('postgresql+psycopg2://postgres@localhost/resonanz_development', echo=True)
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+
+engine = create_engine('postgresql+psycopg2://postgres@localhost/resonanz_development')
 
 Base = declarative_base()
 Session = sessionmaker(bind=engine)

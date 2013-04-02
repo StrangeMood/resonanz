@@ -23,8 +23,8 @@ class Chat(websocket.WebSocketHandler):
     def on_message(self, message):
         message = Message(**json.loads(message))
         message.author = self.current_user
+        message.conversation = self.conversation
 
-        self.conversation.messages.append(message)
         self.db.add(message)
         self.db.commit()
 
