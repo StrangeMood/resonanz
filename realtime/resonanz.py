@@ -1,6 +1,10 @@
+import logging
 from tornado import websocket, web, ioloop
 from chat import Chat
 from models import Session
+
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
 database_session = Session()
 
