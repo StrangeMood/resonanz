@@ -19,7 +19,7 @@ class User(Base):
         return dict(id=self.id, name=self.name)
 
     def __repr__(self):
-        return "<User: id=%s, name='%s'" % (self.id, self.name)
+        return "<User: id=%r, name='%r'>" % (self.id, self.name)
 
 
 class Conversation(Base):
@@ -36,7 +36,7 @@ class Conversation(Base):
         self.connected_users = []
 
     def __repr__(self):
-        return "<Conversation: id=%s" % self.id
+        return "<Conversation: id=%r>" % self.id
 
 
 class Message(Base):
@@ -54,4 +54,4 @@ class Message(Base):
         return dict(text=self.text, author=self.author.as_json())
 
     def __repr__(self):
-        return "<Message: id=%s, text='%s'" % (self.id, self.text)
+        return "<Message: id=%r, text='%r'>" % (self.id, self.text)
