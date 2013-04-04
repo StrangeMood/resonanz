@@ -1,12 +1,27 @@
 function ConversationCtrl($scope, $http) {
+  $scope.disconnected = true
 
   var ws = new WebSocket('ws://localhost:8888' + window.location.pathname)
 
-  ws.onmessage = function(evt) {
+  ws.onopen = function(e) {
     $scope.$apply(function() {
-      $scope.messages.push(JSON.parse(evt.data))
+      $scope.disconnected = false
+      console.log('CONNECTED SUCCESSFULLY')
     })
-  };
+  }
+
+  ws.onclose = function(e) {
+    $scope.$apply(function() {
+      $scope.disconnected = true
+      console.log('DISCONNECTED')
+    })
+  }
+
+  ws.onmessage = function(e) {
+    $scope.$apply(function() {
+      $scope.messages.push(JSON.parse(e.data))
+    })
+  }
 
   $scope.addMessage = function() {
     ws.send(JSON.stringify({text: $scope.message.text}))

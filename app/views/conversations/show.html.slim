@@ -10,5 +10,5 @@ div[ng-controller='ConversationCtrl']
       | {{message.text}}
 
   form[ng-submit='addMessage()']
-    textarea[ng-model='message.text' rows='4']
-    input[type='submit' value='Add Message']
+    textarea[ng-model='message.text' rows='4' ng-disabled='disconnected']
+    input[type='submit' value='Add Message' ng-disabled='disconnected']
