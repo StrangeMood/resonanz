@@ -11,7 +11,7 @@ class ConversationsControllerTest < ActionController::TestCase
     @controller.stub(:current_user, @user1) do
       assert_equal @controller.conversations.to_a, @user1.conversations.to_a
 
-      get(:show, id: @user1.conversations.first)
+      get(:show, id: @user1.conversations.first.slug)
       assert response.success?
     end
   end
@@ -19,7 +19,7 @@ class ConversationsControllerTest < ActionController::TestCase
   test 'send 404 when access foreign conversations' do
     @controller.stub(:current_user, @user1) do
       assert_raises(ActionController::RoutingError) do
-        get :show, id: @user2.conversations.first
+        get(:show, id: @user2.conversations.first.slug)
       end
     end
   end
