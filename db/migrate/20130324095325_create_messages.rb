@@ -5,9 +5,9 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :author_id
       t.integer :conversation_id
 
-      t.foreign_key :conversations, dependent: :delete
+      t.datetime :created_at
 
-      t.timestamps
+      t.foreign_key :conversations, dependent: :delete
     end
   end
 end

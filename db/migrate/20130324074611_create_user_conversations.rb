@@ -7,8 +7,6 @@ class CreateUserConversations < ActiveRecord::Migration
 
       t.foreign_key :users, dependent: :delete
       t.foreign_key :conversations, dependent: :delete
-
-      t.timestamps
     end
 
     add_index :user_conversations, :user_id

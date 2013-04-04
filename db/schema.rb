@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20130324095325) do
 
   create_table "conversations", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "slug"
+    t.boolean "public"
   end
 
   create_table "messages", force: true do |t|
@@ -23,15 +23,12 @@ ActiveRecord::Schema.define(version: 20130324095325) do
     t.integer  "author_id"
     t.integer  "conversation_id"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "user_conversations", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "conversation_id"
-    t.integer  "start_from",      default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id"
+    t.integer "conversation_id"
+    t.integer "start_from",      default: 0
   end
 
   add_index "user_conversations", ["conversation_id"], name: "index_user_conversations_on_conversation_id"
@@ -39,10 +36,8 @@ ActiveRecord::Schema.define(version: 20130324095325) do
   add_index "user_conversations", ["user_id"], name: "index_user_conversations_on_user_id"
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name"
+    t.string "token"
   end
 
   add_foreign_key "messages", "conversations", :name => "messages_conversation_id_fk", :dependent => :delete
