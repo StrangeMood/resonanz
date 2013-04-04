@@ -16,7 +16,11 @@ class Chat(websocket.WebSocketHandler):
     def open(self, conversation_id):
         if self.current_user:
             self.conversation = self.db.query(Conversation).get(conversation_id)
-            self.conversation.connected_users.append(self)
+
+            if self.current_user in self.conversation.members:
+                self.conversation.connected_users.append(self)
+            else:
+                self.close()
         else:
             self.close()
 
@@ -32,5 +36,6 @@ class Chat(websocket.WebSocketHandler):
             user.write_message(json.dumps(message.as_json()))
 
     def on_close(self):
-        self.conversation.connected_users.remove(self)
+        if self.current_user in self.conversation.members:
+            self.conversation.connected_users.remove(self)
         print 'WebSocket closed'

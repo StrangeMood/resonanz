@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Integer, Column, Text, ForeignKey, String
+from sqlalchemy import create_engine, Integer, Column, Text, ForeignKey, String, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, backref
 from sqlalchemy.orm.events import orm
@@ -21,11 +21,16 @@ class User(Base):
     def __repr__(self):
         return "<User: id=%r, name='%r'>" % (self.id, self.name)
 
+user_conversations = Table('user_conversations', Base.metadata,
+    Column('user_id', Integer, ForeignKey('users.id')),
+    Column('conversation_id', Integer, ForeignKey('conversations.id'))
+)
 
 class Conversation(Base):
     __tablename__ = 'conversations'
 
     id = Column(Integer, primary_key=True)
+    members = relationship(User, secondary=user_conversations)
 
     def __init__(self, data):
         self.data = data
