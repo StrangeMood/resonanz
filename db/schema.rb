@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20130324095325) do
 
   create_table "conversations", force: true do |t|
     t.string  "slug"
-    t.boolean "public"
+    t.boolean "is_public", default: true
   end
 
   add_index "conversations", ["slug"], name: "index_conversations_on_slug", unique: true

@@ -3,8 +3,8 @@ require 'test_helper'
 class ConversationsControllerTest < ActionController::TestCase
 
   setup do
-    @user1 = User.create(conversations: [Conversation.create])
-    @user2 = User.create(conversations: [Conversation.create])
+    @user1 = User.create(conversations: [Conversation.create(is_public: false)])
+    @user2 = User.create(conversations: [Conversation.create(is_public: false)])
   end
 
   test 'user sees only his conversations' do
@@ -21,6 +21,17 @@ class ConversationsControllerTest < ActionController::TestCase
       assert_raises(ActionController::RoutingError) do
         get(:show, id: @user2.conversations.first.slug)
       end
+    end
+  end
+
+  test 'user becomes a member when access public conversation' do
+    public_conversation = Conversation.create(is_public: true)
+
+    @controller.stub(:current_user, @user1) do
+      get(:show, id: public_conversation.slug)
+
+      assert response.success?
+      assert_includes @user1.conversations, public_conversation
     end
   end
 

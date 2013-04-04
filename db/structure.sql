@@ -35,7 +35,7 @@ SET default_with_oids = false;
 CREATE TABLE conversations (
     id integer NOT NULL,
     slug character varying,
-    public boolean
+    is_public boolean DEFAULT true
 );
 
 
