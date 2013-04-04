@@ -16,6 +16,8 @@ class Chat(websocket.WebSocketHandler):
 
     def open(self, conversation_id):
         if self.current_user:
+            self.db.flush()
+
             self.conversation = self.db.query(Conversation).filter_by(slug=conversation_id).first()
 
             if self.current_user in self.conversation.members:
