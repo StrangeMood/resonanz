@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 from tornado import websocket
 from models import User, Conversation, Message
@@ -15,7 +16,7 @@ class Chat(websocket.WebSocketHandler):
 
     def open(self, conversation_id):
         if self.current_user:
-            self.conversation = self.db.query(Conversation).get(conversation_id)
+            self.conversation = self.db.query(Conversation).filter_by(slug=conversation_id).first()
 
             if self.current_user in self.conversation.members:
                 self.conversation.connected_users.append(self)
@@ -27,6 +28,7 @@ class Chat(websocket.WebSocketHandler):
     def on_message(self, message):
         message = Message(**json.loads(message))
         message.author = self.current_user
+        message.created_at = datetime.utcnow()
         message.conversation = self.conversation
 
         self.db.add(message)

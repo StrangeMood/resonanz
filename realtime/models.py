@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Integer, Column, Text, ForeignKey, String, Table
+from sqlalchemy import create_engine, Integer, Column, Text, ForeignKey, String, Table, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, backref
 from sqlalchemy.orm.events import orm
@@ -30,6 +30,7 @@ class Conversation(Base):
     __tablename__ = 'conversations'
 
     id = Column(Integer, primary_key=True)
+    slug = Column(String)
     members = relationship(User, secondary=user_conversations)
 
     def __init__(self, data):
@@ -51,12 +52,16 @@ class Message(Base):
     text = Column(Text)
     conversation_id = Column(Integer, ForeignKey('conversations.id'))
     author_id = Column(Integer, ForeignKey('users.id'))
+    created_at = Column(DateTime)
 
     conversation = relationship('Conversation', backref=backref('messages', order_by=id))
     author = relationship('User')
 
     def as_json(self):
-        return dict(text=self.text, author=self.author.as_json())
+        return dict(id=self.id,
+                    text=self.text,
+                    created_at=self.created_at.strftime('%Y-%m-%dT%H:%M:%S'),
+                    author=self.author.as_json())
 
     def __repr__(self):
         return "<Message: id=%r, text='%r'>" % (self.id, self.text)

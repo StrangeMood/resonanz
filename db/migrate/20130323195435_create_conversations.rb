@@ -4,5 +4,7 @@ class CreateConversations < ActiveRecord::Migration
       t.string :slug
       t.boolean :public
     end
+
+    add_index :conversations, :slug, unique: true
   end
 end

@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20130324095325) do
     t.boolean "public"
   end
 
+  add_index "conversations", ["slug"], name: "index_conversations_on_slug", unique: true
+
   create_table "messages", force: true do |t|
     t.text     "text"
     t.integer  "author_id"

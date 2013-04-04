@@ -20,6 +20,7 @@ function ConversationCtrl($scope, $http) {
   ws.onmessage = function(e) {
     $scope.$apply(function() {
       $scope.messages.push(JSON.parse(e.data))
+      console.log('MESSAGE: ', e.data)
     })
   }
 

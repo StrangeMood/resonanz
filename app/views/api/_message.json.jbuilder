@@ -1,4 +1,4 @@
-json.(message, :id, :text)
+json.(message, :id, :text, :created_at)
 
 if message.author
   json.author do

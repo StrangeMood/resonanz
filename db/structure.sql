@@ -221,6 +221,13 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: index_conversations_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_conversations_on_slug ON conversations USING btree (slug);
+
+
+--
 -- Name: index_user_conversations_on_conversation_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
