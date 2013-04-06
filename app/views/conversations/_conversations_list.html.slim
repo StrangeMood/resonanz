@@ -1,6 +1,6 @@
 ul
   - conversations.each do |conversation|
-    li.conversation[ class="#{'current' if current == conversation}" ]
+    li.conversation[ class="#{'current' if defined?(current) && current == conversation}" ]
       = link_to conversation do
         h3= "##{conversation.slug}"
         - if conversation.last_message

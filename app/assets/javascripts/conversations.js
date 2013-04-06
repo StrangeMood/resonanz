@@ -1,5 +1,7 @@
-function ConversationCtrl($scope, $http) {
+function ConversationCtrl($scope, $cookies) {
   $scope.disconnected = true
+
+  $scope.submitOnEnter = $cookies.submitOnEnter == '1'
 
   function connect() {
     var ws = new WebSocket('ws://localhost:8888/conversations/' + $scope.conversation.slug)
@@ -34,6 +36,16 @@ function ConversationCtrl($scope, $http) {
     $scope.message.text = ''
   }
 
+  $scope.textAreaKeypress = function(e) {
+    console.log($scope.submitOnEnter)
+    if (e.which == 13 && $scope.submitOnEnter) {
+      $scope.addMessage()
+    }
+  }
+
+  $scope.writeUserSettings = function() {
+    $cookies.submitOnEnter = $scope.submitOnEnter ? '1' : '0'
+  }
   // postpone connection establishment while initialisation finished
   setTimeout(connect, 0)
 }
