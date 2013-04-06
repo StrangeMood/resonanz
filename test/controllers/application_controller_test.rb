@@ -34,6 +34,10 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_equal '{"test":"test"}', @controller.render_for_api(@dummy_model.new)
   end
 
+  test '#render_for_api renders empty collection' do
+    assert_equal '[]', @controller.render_for_api([])
+  end
+
   test '#render_for_api renders array of models' do
     template = File.join(@views_folder, 'api/_dummy.json.jbuilder')
     File.open(template, 'w') { |file| file.write('json.test "test"') }

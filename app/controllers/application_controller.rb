@@ -30,11 +30,14 @@ class ApplicationController < ActionController::Base
   # open this method for models serialisation to json
   def render_for_api model
     if model.respond_to?(:each)
-      # try to find collection template
-      collection_name = model.first.class.model_name.collection
-
-      render_to_string(partial: "api/#{collection_name}.json", locals: {collection_name.to_sym => model}) rescue
-          "[#{model.map(&method(:render_for_api)).join(',')}]"
+      begin
+        # try to render collection template
+        collection_name = model.first.class.model_name.collection
+        render_to_string(partial: "api/#{collection_name}.json", locals: {collection_name.to_sym => model})
+      rescue
+        # fallback to array render
+        "[#{model.map(&method(:render_for_api)).join(',')}]"
+      end
     else
       render_to_string(model)
     end
