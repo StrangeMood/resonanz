@@ -6,4 +6,6 @@ en:
       ru: RU
 
   conversations:
-    greeting: A lot of interesting things will be here. Stay tuned...
+    text_placeholder: Write a reply...
+    send_by_enter: Press enter to send
+    send: Send

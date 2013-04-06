@@ -6,4 +6,6 @@ ru:
       ru: Рус
 
   conversations:
-    greeting: Здесь будет много всего интересного. Ждите и надейтесь...
+    text_placeholder: Не сиди просто так, черкни пару строк
+    send_by_enter: Enter отправляет сообщения
+    send: Отправить
