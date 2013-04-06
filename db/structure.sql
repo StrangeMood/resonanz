@@ -35,7 +35,9 @@ SET default_with_oids = false;
 CREATE TABLE conversations (
     id integer NOT NULL,
     slug character varying,
-    is_public boolean DEFAULT true
+    is_public boolean DEFAULT true,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -67,7 +69,8 @@ CREATE TABLE messages (
     text text,
     author_id integer,
     conversation_id integer,
-    created_at timestamp without time zone
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -107,7 +110,9 @@ CREATE TABLE user_conversations (
     id integer NOT NULL,
     user_id integer,
     conversation_id integer,
-    start_from integer DEFAULT 0
+    start_from integer DEFAULT 0,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -137,7 +142,9 @@ ALTER SEQUENCE user_conversations_id_seq OWNED BY user_conversations.id;
 CREATE TABLE users (
     id integer NOT NULL,
     name character varying,
-    token character varying
+    token character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 

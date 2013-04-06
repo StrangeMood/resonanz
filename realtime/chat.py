@@ -20,7 +20,7 @@ class Chat(websocket.WebSocketHandler):
 
             self.conversation = self.db.query(Conversation).filter_by(slug=conversation_id).first()
 
-            if self.current_user in self.conversation.members:
+            if self.conversation and self.current_user in self.conversation.members:
                 self.conversation.connected_users.append(self)
             else:
                 self.close()
