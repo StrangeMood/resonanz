@@ -32,12 +32,13 @@ function ConversationCtrl($scope, $cookies) {
   }
 
   $scope.addMessage = function() {
-    $scope._ws.send(JSON.stringify({text: $scope.message.text}))
-    $scope.message.text = ''
+    if ($scope.message.text) {
+      $scope._ws.send(JSON.stringify({text: $scope.message.text}))
+      $scope.message.text = ''
+    }
   }
 
   $scope.textAreaKeypress = function(e) {
-    console.log($scope.submitOnEnter)
     if (e.which == 13 && $scope.submitOnEnter) {
       $scope.addMessage()
     }
