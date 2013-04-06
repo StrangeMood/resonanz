@@ -8,6 +8,7 @@
   +box-orient(horizontal)
   +box-align(stretch)
   height: 100%
+  width: 100%
 
   nav
     +box-flex(1)
@@ -24,7 +25,23 @@
       &:hover
         background-color: $color_background_light
       &.current
-        background-color: $color_background
+        background-color: $color_border_light
+        position: relative
+        // triangle
+        &:after
+          position: absolute
+          right: -0.8em
+          top: 1em
+          content: '.'
+          color: #fff
+          display: block
+          line-height: 0
+          height: 0
+          border-left: 0.8em solid $color_border_light
+          border-top: 0.9em solid transparent
+          border-bottom: 0.9em solid transparent
+
+
       // borders between conversations
       border-bottom: 1px solid $color_border_light
       //background-color: $color_light_4
@@ -55,6 +72,7 @@
 
   section.conversation
     +box-flex(1)
+
     ul
       list-style-type: none
       margin: 0
@@ -80,7 +98,18 @@
 
     .edit-area
       &.disabled
-        opacity: 0.7
+        position: relative
+        opacity: 0.5
+        &:after
+          position: absolute
+          left: 0
+          right: 0
+          top: 0
+          bottom: 0
+          content: '.'
+          color: $color_border_light
+          display: block
+          background-image: url(image_path('background_stripes.gif'))
 
       border: 1px solid $color_border_light
       background-color: #fff
@@ -107,8 +136,6 @@
             &:hover
               color: $color_sub
           input[type=submit]
-            &:disabled
-              background-color: $color_border_light
             background-color: $color_main
             color: #fff
             padding: 0

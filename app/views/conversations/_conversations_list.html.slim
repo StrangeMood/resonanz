@@ -7,3 +7,6 @@ ul
           .last-message-date= dtf conversation.last_message.created_at
           .last-message
             span= conversation.last_message.text
+        - else
+          .last-message
+            span  &nbsp
