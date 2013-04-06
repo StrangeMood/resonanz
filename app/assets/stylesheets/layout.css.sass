@@ -1,0 +1,37 @@
+body
+  font-family: $base_font
+  margin: 0 auto
+  width: 900px
+
+.header
+  @include clearfix
+  border-bottom: 1px dotted #000
+
+  h1
+    float: left
+    padding: 0
+    margin: 0
+    line-height: 1em
+    font-family: $condenced_font
+    text-transform: uppercase
+    a
+      text-decoration: none
+      color: inherit
+  ul
+    float: right
+    list-style-type: none
+    padding: 0
+    margin: 0
+    height: 2em
+    li
+      float: left
+      margin: 0.5em 0
+      padding: 0 5px
+      &:last-child
+        border-left: 1px solid #000
+  .locale strong
+    font-weight: bolder
+
+
+.content
+  clear: both

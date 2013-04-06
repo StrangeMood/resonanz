@@ -2,12 +2,26 @@ doctype html
 html[ ng-app='' ]
   head
     title Resonanz
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic'
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic'
+
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
 
   body[ng-init='currentUser=#{render_for_api(current_user)}']
-    p
-      = link_to t('layout.change_locale'), url_for(locale: I18n.locale == :ru ? :en : nil)
-      | &nbsp
-      = t('layout.name', user_name: current_user.name)
-    = yield
+    .header
+      h1
+        = link_to 'Resonanz', root_path
+      ul
+        li.current-user
+          = t('layout.name')
+          | &nbsp
+          strong= current_user.name
+        - [:ru, :en].each do |locale|
+          li.locale
+            - if I18n.locale == locale
+              strong= t(locale, scope: 'layout.change_locale')
+            - else
+              = link_to t(locale, scope: 'layout.change_locale'), url_for(locale: locale)
+    .content
+      = yield

@@ -1,6 +1,9 @@
 ru:
   layout:
-    name: Сегодня вы не кто иной, как %{user_name}.
-    change_locale: Переменить язык на английский.
+    name: 'Сегодня вы:'
+    change_locale:
+      en: Анг
+      ru: Рус
+
   conversations:
     greeting: Здесь будет много всего интересного. Ждите и надейтесь...
