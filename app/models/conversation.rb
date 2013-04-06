@@ -8,6 +8,10 @@ class Conversation < ActiveRecord::Base
 
   after_save :ensure_slug
 
+  def last_message
+    messages.last
+  end
+
   def to_param
     slug
   end

@@ -7,9 +7,10 @@ html[ ng-app='' ]
 
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
+    = yield(:head) if content_for?(:head)
 
   body[ng-init='currentUser=#{render_for_api(current_user)}']
-    .header
+    header
       h1
         = link_to 'Resonanz', root_path
       ul
@@ -23,5 +24,5 @@ html[ ng-app='' ]
               strong= t(locale, scope: 'layout.change_locale')
             - else
               = link_to t(locale, scope: 'layout.change_locale'), url_for(locale: locale)
-    .content
-      = yield
+    #main
+      = content_for?(:main) ? yield(:main) : yield

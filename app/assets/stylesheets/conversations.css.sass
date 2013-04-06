@@ -1,4 +1,73 @@
-// Place all the styles related to the conversations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import globals
+@import mixins
 
+@import compass/css3/box
+
+#main
+  +display-box
+  +box-orient(horizontal)
+  +box-align(stretch)
+  height: 100%
+
+  nav
+    +box-flex(1)
+    max-width: 18em
+    min-width: 18em
+
+    border-right: 1px solid $color_light_1
+
+    ul
+      list-style-type: none
+      margin: 0
+      padding: 0
+    .conversation
+      &:hover
+        background-color: $color_light_7
+      &.current
+        background-color: $color_light_6
+
+    .conversation a
+      +clearfix
+      text-decoration: none
+      color: $color_base
+      display: block
+      padding: 0.5em 0
+      margin: 0 0.5em
+
+      h3
+        float: left
+        margin: 0
+        font-size: 1.2em
+      .last-message-date
+        float: right
+        padding: 0.1em
+
+      .last-message
+        clear: both
+        font-size: 0.9em
+        color: $color_light_1
+        white-space: nowrap
+        text-overflow: ellipsis
+        overflow: hidden
+
+      // borders between conversations
+      border-bottom: 1px solid $color_light_3
+      //background-color: $color_light_4
+  section.conversation
+    +box-flex(1)
+    ul
+      list-style-type: none
+      margin: 0
+      padding: 0
+      li
+        margin: 0 0.5em
+    h3
+      float: left
+      margin: 0
+      font-size: 1em
+    .message-date
+      float: right
+      color: $color_light_1
+    p
+      margin-bottom: 1em
+      clear: both

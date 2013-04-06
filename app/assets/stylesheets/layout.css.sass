@@ -3,34 +3,4 @@ body
   margin: 0 auto
   width: 900px
 
-.header
-  @include clearfix
-  border-bottom: 1px solid $color_light_1
-
-  h1
-    float: left
-    padding: 0
-    margin: 0
-    line-height: 1em
-    font-family: $font_condenced
-    text-transform: uppercase
-    a
-      text-decoration: none
-      color: inherit
-  ul
-    float: right
-    list-style-type: none
-    padding: 0
-    margin: 0
-    height: 2em
-    li
-      float: left
-      margin: 0.5em 0
-      padding: 0 0.25em
-      &:last-child
-        border-left: 1px solid $color_base
-  .locale strong
-    font-weight: bolder
-
-.content
-  clear: both
+@import header

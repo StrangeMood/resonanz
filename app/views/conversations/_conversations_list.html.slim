@@ -1,0 +1,9 @@
+ul
+  - conversations.each do |conversation|
+    li.conversation[ class="#{'current' if current == conversation}" ]
+      = link_to conversation do
+        h3= "##{conversation.slug}"
+        - if conversation.last_message
+          .last-message-date= dtf conversation.last_message.created_at
+          .last-message
+            span= conversation.last_message.text
