@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
         "[#{model.map(&method(:render_for_api)).join(',')}]"
       end
     else
-      render_to_string(model)
+      render_to_string(model, formats: :json)
     end
   end
   helper_method :render_for_api
