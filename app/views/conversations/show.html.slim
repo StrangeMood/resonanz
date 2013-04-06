@@ -1,10 +1,10 @@
-div[ng-controller='ConversationCtrl']
+div[ng-controller='ConversationCtrl' ng-init="conversation=#{render_for_api(conversation)}"]
   h1 Conversation Numba #{conversation.id}
 
   h2 There is some messages here. ({{messages.length}})
 
   - current_messages = render_for_api(conversation.messages)
-  ul[ng-init="messages=#{current_messages}; conversationPath='#{conversation_path(conversation)}'"]
+  ul[ng-init="messages=#{current_messages}"]
     li[ng-repeat='message in messages']
       strong {{message.author.name}}:{{message.created_at | date:'medium'}}:&nbsp
       | {{message.text}}
