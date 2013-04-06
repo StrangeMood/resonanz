@@ -14,7 +14,7 @@
     max-width: 18em
     min-width: 18em
 
-    border-right: 1px solid $color_light_1
+    border-right: 1px solid $color_border
 
     ul
       list-style-type: none
@@ -22,14 +22,17 @@
       padding: 0
     .conversation
       &:hover
-        background-color: $color_light_7
+        background-color: $color_background_light
       &.current
-        background-color: $color_light_6
+        background-color: $color_background
+      // borders between conversations
+      border-bottom: 1px solid $color_border_light
+      //background-color: $color_light_4
 
     .conversation a
       +clearfix
       text-decoration: none
-      color: $color_base
+      color: $color_main
       display: block
       padding: 0.5em 0
       margin: 0 0.5em
@@ -45,14 +48,11 @@
       .last-message
         clear: both
         font-size: 0.9em
-        color: $color_light_1
+        color: $color_sub
         white-space: nowrap
         text-overflow: ellipsis
         overflow: hidden
 
-      // borders between conversations
-      border-bottom: 1px solid $color_light_3
-      //background-color: $color_light_4
   section.conversation
     +box-flex(1)
     ul
@@ -67,22 +67,22 @@
       font-size: 1em
     .message-date
       float: right
-      color: $color_light_1
+      color: $color_sub
     p
       margin-bottom: 1em
       clear: both
 
     form
       padding: 1em
-      background-color: $color_light_6
+      background-color: $color_background
 
-      border-top: 1px solid $color_light_3
+      border-top: 1px solid $color_border_light
 
     .edit-area
       &.disabled
         opacity: 0.7
 
-      border: 1px solid $color_light_3
+      border: 1px solid $color_border_light
       background-color: #fff
       .text-area
         padding: 0.25em
@@ -97,17 +97,19 @@
         font-size: 0.9em
       .controls
         +clearfix
-        border-top: 1px dotted $color_light_3
+        border-top: 1px dotted $color_border_light
         .submit
           label
             padding: 0.5em
             line-height: 3em
             font-size: 0.8em
-            color: $color_light_1
+            color: $color_sub_light
+            &:hover
+              color: $color_sub
           input[type=submit]
             &:disabled
-              background-color: $color_light_1
-            background-color: $color_base
+              background-color: $color_border_light
+            background-color: $color_main
             color: #fff
             padding: 0
             border: none
@@ -116,6 +118,6 @@
             padding: 0.2em 0.5em
             margin: 0.5em
 
-          border-left: 1px dotted $color_light_3
+          border-left: 1px dotted $color_border_light
           float: right
 
