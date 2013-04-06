@@ -5,6 +5,8 @@ class CreateUserConversations < ActiveRecord::Migration
       t.integer :conversation_id
       t.integer :start_from, default: 0
 
+      t.timestamps
+
       t.foreign_key :users, dependent: :delete
       t.foreign_key :conversations, dependent: :delete
     end

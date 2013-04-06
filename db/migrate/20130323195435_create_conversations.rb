@@ -3,6 +3,8 @@ class CreateConversations < ActiveRecord::Migration
     create_table :conversations do |t|
       t.string :slug
       t.boolean :is_public, default: true
+
+      t.timestamps
     end
 
     add_index :conversations, :slug, unique: true
