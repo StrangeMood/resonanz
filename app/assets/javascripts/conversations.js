@@ -3,6 +3,14 @@ function ConversationCtrl($scope, $cookies) {
 
   $scope.submitOnEnter = $cookies.submitOnEnter == '1'
 
+  $('.conversation .messages').on('scroll', function(e) {
+    if (this.scrollHeight - this.scrollTop === this.clientHeight) {
+      window.location.hash = 'follow'
+    } else {
+      window.location.hash = ''
+    }
+  })
+
   function connect() {
     var ws = new WebSocket('ws://localhost:8888/conversations/' + $scope.conversation.slug)
 
@@ -26,6 +34,10 @@ function ConversationCtrl($scope, $cookies) {
         $scope.messages.push(JSON.parse(e.data))
         console.log('MESSAGE: ', e.data)
       })
+
+      if (window.location.hash === '#follow') {
+        $('.conversation .messages').scrollTop(1000000)
+      }
     }
 
     $scope._ws = ws
@@ -47,6 +59,7 @@ function ConversationCtrl($scope, $cookies) {
   $scope.writeUserSettings = function() {
     $cookies.submitOnEnter = $scope.submitOnEnter ? '1' : '0'
   }
+
   // postpone connection establishment while initialisation finished
   setTimeout(connect, 0)
 }

@@ -8,6 +8,7 @@ section.conversation[ng-controller='ConversationCtrl' ng-init="conversation=#{re
       h3.author {{message.author.name}}
       .message-date {{message.created_at | date:'medium'}}
       p {{message.text}}
+    li#follow
 
   form[ng-submit='addMessage()']
     .edit-area[ng-class='{disabled:disconnected}']

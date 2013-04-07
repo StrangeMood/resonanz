@@ -1,7 +1,7 @@
 ul
   - conversations.each do |conversation|
     li.conversation[ class="#{'current' if defined?(current) && current == conversation}" ]
-      = link_to conversation do
+      = link_to conversation_path(conversation, anchor: 'follow') do
         h3= "##{conversation.slug}"
         - if conversation.last_message
           .last-message-date= dtf conversation.last_message.created_at

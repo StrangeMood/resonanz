@@ -1,3 +1,4 @@
+//= require jquery/jquery
 //= require angular/angular
 //= require angular-cookies/angular-cookies
 
