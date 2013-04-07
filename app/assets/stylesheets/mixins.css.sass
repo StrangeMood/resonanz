@@ -6,3 +6,26 @@
     visibility: hidden
     line-height: 0
     height: 0
+
+@mixin button($bk_color, $text_color)
+  background-color: $bk_color
+  color: $text_color
+  padding: 0
+  border: none
+  font-size: 0.8em
+  line-height: 1.6em
+  padding: 0.2em 0.5em
+  margin: 0.5em
+  cursor: pointer
+  text-transform: uppercase
+  font: $font_condenced
+  border: 1px solid $bk_color
+  &:hover
+    background-color: lighten($bk_color, 20%)
+  &:active
+    background-color: invert($bk_color)
+    color: invert($text_color)
+  &:disabled
+    opacity: 0.5
+    background-color: $bk_color
+    color: $text_color
