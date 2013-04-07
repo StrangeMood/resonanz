@@ -29,3 +29,30 @@
     opacity: 0.5
     background-color: $bk_color
     color: $text_color
+
+@mixin disabled
+  position: relative
+  opacity: 0.5
+  &:after
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    content: '.'
+    color: $color_border_light
+    display: block
+    background-image: url(image_path('background_stripes.gif'))
+
+@mixin tooltip
+  position: relative
+
+  &:hover:after
+    content: attr(data-tooltip)
+    position: absolute
+    left: 0
+    top: 24px
+    background-color: $color_main
+    color: #fff
+    font-size: 1em
+    padding: 0.2em

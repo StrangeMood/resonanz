@@ -63,7 +63,13 @@ body
           border-top: 0.9em solid transparent
           border-bottom: 0.9em solid transparent
 
-
+      .actions
+        display: none
+        float: right
+        i:hover
+          color: $color_main
+      &:hover .actions
+        display: inline-block
       // borders between conversations
       border-bottom: 1px solid $color_border_light
 
@@ -117,18 +123,7 @@ body
 
     .edit-area
       &.disabled
-        position: relative
-        opacity: 0.5
-        &:after
-          position: absolute
-          left: 0
-          right: 0
-          top: 0
-          bottom: 0
-          content: '.'
-          color: $color_border_light
-          display: block
-          background-image: url(image_path('background_stripes.gif'))
+        +disabled
 
       border: 1px solid $color_border_light
       background-color: #fff

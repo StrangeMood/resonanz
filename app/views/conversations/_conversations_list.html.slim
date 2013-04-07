@@ -7,6 +7,8 @@ ul
           .last-message-date= dtf conversation.last_message.created_at
           .last-message
             span= conversation.last_message.text
+            .actions
+              i.icon-trash[data-tooltip='#{t('conversations.delete')}']
         - else
           .last-message
             span  &nbsp
