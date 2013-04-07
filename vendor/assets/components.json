@@ -2,6 +2,7 @@
   "dependencies": {
     "jquery": "latest",
     "angular": "latest",
-    "angular-cookies": "latest"
+    "angular-cookies": "latest",
+    "font-awesome": "latest"
   }
 }

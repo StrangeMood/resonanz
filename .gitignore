@@ -15,4 +15,13 @@
 /log/*.log
 /tmp
 
+# font awesome
+vendor/assets/components/font-awesome/css
+vendor/assets/components/font-awesome/docs
+vendor/assets/components/font-awesome/less
+vendor/assets/components/font-awesome/sass/*.scss
+vendor/assets/components/font-awesome/.gitignore
+vendor/assets/components/font-awesome/component.json
+vendor/assets/components/font-awesome/README.md
+
 .idea
