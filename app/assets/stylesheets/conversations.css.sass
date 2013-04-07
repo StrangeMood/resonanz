@@ -3,21 +3,42 @@
 
 @import compass/css3/box
 
+// layout
+html, body
+  height: 100%
+
+body
+  +display-box
+  +box-orient(vertical)
+  +box-align(stretch)
+
 #main
+  +box-flex(1)
   +display-box
   +box-orient(horizontal)
   +box-align(stretch)
-  height: 100%
   width: 100%
-
   nav
-    +box-flex(1)
     max-width: 18em
     min-width: 18em
+    border-right: 1px solid $color_border
+    border-left:  1px solid $color_border
+  section.conversation
+    +box-flex(1)
+
+    +display-box
+    +box-orient(vertical)
+    +box-align(stretch)
 
     border-right: 1px solid $color_border
-    border-left: 1px solid $color_border
+    border-left:  1px solid $color_border
+    .messages
+      +box-flex(1)
+      overflow: auto
 
+
+#main
+  nav
     ul
       list-style-type: none
       margin: 0
@@ -71,11 +92,6 @@
         overflow: hidden
 
   section.conversation
-    +box-flex(1)
-
-    border-right: 1px solid $color_border
-    border-left: 1px solid $color_border
-
     ul
       list-style-type: none
       margin: 0
@@ -133,7 +149,7 @@
         .submit
           label
             padding: 0.5em
-            line-height: 3em
+            line-height: 2.8em
             font-size: 0.8em
             color: $color_sub_light
             cursor: pointer
