@@ -14,7 +14,7 @@ function ConversationCtrl($scope) {
   })
 
   function connect() {
-    var ws = new WebSocket('ws://localhost:8888/conversations/' + $scope.conversation.slug)
+    var ws = new WebSocket('ws://'+window.location.host.replace(/:\d+/, '')+':8888/conversations/' + $scope.conversation.slug)
 
     ws.onopen = function(e) {
       $scope.$apply(function() {
