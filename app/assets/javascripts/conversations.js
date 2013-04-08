@@ -1,7 +1,9 @@
-function ConversationCtrl($scope, $cookies) {
+//= require conversations_list
+
+function ConversationCtrl($scope) {
   $scope.disconnected = true
 
-  $scope.submitOnEnter = $cookies.submitOnEnter == '1'
+  $scope.submitOnEnter = $.cookie('submit_on_enter') == '1'
 
   $('.conversation .messages').on('scroll', function(e) {
     if (this.scrollHeight - this.scrollTop === this.clientHeight) {
@@ -57,7 +59,7 @@ function ConversationCtrl($scope, $cookies) {
   }
 
   $scope.writeUserSettings = function() {
-    $cookies.submitOnEnter = $scope.submitOnEnter ? '1' : '0'
+    $.cookie('submit_on_enter', ($scope.submitOnEnter ? '1' : '0'), {path: '/'})
   }
 
   // postpone connection establishment while initialisation finished

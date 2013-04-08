@@ -1,8 +1,8 @@
 //= require jquery/jquery
 //= require angular/angular
-//= require angular-cookies/angular-cookies
+//= require jquery.cookie/jquery.cookie
 
-var app = angular.module('resonanz', ['ngCookies']);
+var app = angular.module('resonanz', []);
 
 app.directive('onKeyup', function() {
   return function(scope, elm, attrs) {

@@ -1,0 +1,3 @@
+function ConversationsListCtrl($scope, $http) {
+
+}
