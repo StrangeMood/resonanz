@@ -42,15 +42,27 @@ class ApplicationController < ActionController::Base
       render_to_string(model)
     end
   end
+  hide_action :render_for_api
   helper_method :render_for_api
 
   private
+
+  def redirect_back_or(default)
+    redirect_to(session.delete(:return_to) || default)
+  end
+
+  def store_location
+    session[:return_to] = request.fullpath
+  end
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
   def ensure_user
-    redirect_to(create_identity_path) unless current_user
+    unless current_user
+      store_location
+      redirect_to(create_identity_path)
+    end
   end
 end

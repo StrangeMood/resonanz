@@ -5,6 +5,6 @@ class SessionsController < ApplicationController
     user = User.create
     cookies.permanent.signed[:id] = user.id
 
-    redirect_to(root_path)
+    redirect_back_or(root_path)
   end
 end

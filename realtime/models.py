@@ -6,7 +6,7 @@ from sqlalchemy.orm.events import orm
 engine = create_engine('postgresql+psycopg2://postgres@localhost/resonanz_development')
 
 Base = declarative_base()
-Session = sessionmaker(bind=engine)
+Session = sessionmaker(bind=engine, autoflush=False)
 
 
 class User(Base):
@@ -31,7 +31,7 @@ class Conversation(Base):
 
     id = Column(Integer, primary_key=True)
     slug = Column(String)
-    members = relationship(User, secondary=user_conversations)
+    members = relationship(User, secondary=user_conversations, backref='conversations')
 
     def __init__(self, data):
         self.data = data
