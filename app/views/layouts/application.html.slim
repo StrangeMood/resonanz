@@ -11,8 +11,10 @@ html[ ng-app='resonanz' ]
 
   body[ng-init='currentUser=#{render_for_api(current_user)}']
     header
-      h1
-        = link_to 'Resonanz', root_path
+      = link_to root_path, class: 'logo' do
+        h1
+          span.head re
+          span sonanz
       ul
         li.current-user
           = t('layout.name')
