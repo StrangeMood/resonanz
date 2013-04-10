@@ -22,8 +22,8 @@ body
   nav
     max-width: 18em
     min-width: 18em
-    border-right: 1px solid $color_border
-    border-left:  1px solid $color_border
+    border-right: $border_width solid $color_border
+    border-left:  $border_width solid $color_border
   section.conversation
     +box-flex(1)
 
@@ -31,8 +31,8 @@ body
     +box-orient(vertical)
     +box-align(stretch)
 
-    border-right: 1px solid $color_border
-    border-left:  1px solid $color_border
+    border-right: $border_width solid $color_border
+    border-left:  $border_width solid $color_border
     .messages
       +box-flex(1)
       overflow: auto
@@ -54,14 +54,14 @@ body
         &:after
           +rotate(45deg)
           position: absolute
-          right: -0.66em
-          top: 1.2em
+          right: - (sqrt(2em) / 2 - $border_width)
+          top: (3.75em - sqrt(2em) + $border_width*4) / 2
           content: '.'
           display: block
           width: 1em
           height: 1em
-          border-right: 2px solid $color_border
-          border-top: 2px solid $color_border
+          border-right: $border_width*2 solid $color_border
+          border-top:   $border_width*2 solid $color_border
           background-color: $color_background
           color: $color_background
 
@@ -73,7 +73,7 @@ body
       &:hover .actions
         display: inline-block
       // borders between conversations
-      border-bottom: 1px solid $color_border_light
+      border-bottom: $border_width solid $color_border_light
 
     .conversation a
       +clearfix
@@ -121,13 +121,13 @@ body
       padding: 1em
       background-color: $color_background
 
-      border-top: 1px solid $color_border_light
+      border-top: $border_width solid $color_border_light
 
     .edit-area
       &.disabled
         +disabled
 
-      border: 1px solid $color_border_light
+      border: $border_width solid $color_border_light
       background-color: #fff
       .text-area
         padding: 0.25em
