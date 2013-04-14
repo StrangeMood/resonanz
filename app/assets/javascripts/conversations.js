@@ -55,8 +55,11 @@ function ConversationCtrl($scope) {
       var before = moment(previous.created_at),
         after = moment(message.created_at)
 
-      if (message.author.id == previous.author.id && before.dayOfYear() == after.dayOfYear())
-        return 'merged'
+      if (before.dayOfYear() != after.dayOfYear()) return 'separated'
+
+      if (message.author.id == previous.author.id) return 'merged'
+    } else {
+      return 'separated'
     }
   }
 

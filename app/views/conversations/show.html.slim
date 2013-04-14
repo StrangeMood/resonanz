@@ -5,10 +5,13 @@ section.conversation[ng-controller='ConversationCtrl' ng-init="conversation=#{re
   - current_messages = render_for_api(conversation.messages)
   ul.messages[ng-init="messages=#{current_messages}"]
     li[ng-repeat="message in messages"
-       class="{{isMine(message)}} {{messageType(message, messages[$index-1])}}"]
-      h3.author {{message.author.name}}
+       class="{{isMine(message)}} {{messageType(message, messages[$index-1])}}"
+       data-day-separator="{{daySeparator(message, messages[$index-1]) | moment:'day'}}"]
+      h3
+        a[name="{{message.id}}"] {{message.id}}
+        a {{message.author.name}}
       p
-        .message-date {{message.created_at | moment:'time'}}
+        time {{message.created_at | moment:'time'}}
         | {{message.text}}
     li#follow
 

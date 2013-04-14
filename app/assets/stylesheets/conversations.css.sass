@@ -67,6 +67,7 @@ body
           color: $color_background
 
       .actions
+        position: relative
         display: none
         float: right
         i:hover
@@ -119,16 +120,31 @@ body
           border-top: none
           h3
             display: none
-
+        &.separated:before
+          content: attr(data-day-separator)
+          display: block
+          text-align: center
+          margin-bottom: 0.5rem
+          text-transform: capitalize
+          color: $color_sub_light
+          font-size: 0.8em
     h3
       float: left
       margin: 0
       font-size: 0.8em
       color: $color_sub_light
       font-weight: normal
-      &:hover
-        color: $color_main
-    .message-date
+      a
+        cursor: pointer
+        &:hover
+          color: $color_main
+        &:first-child
+          padding-right: 0.5em
+          margin-right: 0.5em
+          border-right: $border_width dotted $color_sub_light
+
+    time
+      margin-right: -3.5em
       font-size: 0.8em
       float: right
       color: $color_sub_light
@@ -137,6 +153,7 @@ body
     p
       clear: both
       margin: 0
+      padding-right: 3em
 
     form
       padding: 1rem
