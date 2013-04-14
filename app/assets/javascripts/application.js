@@ -1,3 +1,4 @@
+//= require fastclick/lib/fastclick
 //= require jquery/jquery
 //= require angular/angular
 //= require jquery.cookie/jquery.cookie

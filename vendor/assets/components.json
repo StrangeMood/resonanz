@@ -3,6 +3,7 @@
     "jquery": "latest",
     "angular": "latest",
     "jquery.cookie": "latest",
-    "font-awesome": "latest"
+    "font-awesome": "latest",
+    "fastclick": "latest"
   }
 }

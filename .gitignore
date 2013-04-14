@@ -23,4 +23,8 @@ vendor/assets/components/font-awesome/*
 vendor/assets/components/jquery.cookie/*
 !vendor/assets/components/jquery.cookie/jquery.cookie.js
 
+# fastclick
+vendor/assets/components/fastclick/*
+!vendor/assets/components/fastclick/lib
+
 .idea
