@@ -100,23 +100,43 @@ body
         text-overflow: ellipsis
         overflow: hidden
 
+  #follow
+    border: none
+    padding: 0
+    height: 0
+
   section.conversation
     ul
       list-style-type: none
       margin: 0
       padding: 0
       li
-        margin: 0 1rem
+        padding: 0.5rem 1rem 0.5rem 1rem
+        border-top: $border_width solid $color_background
+        &.mine
+          background-color: $color_background_light
+        &.merged
+          border-top: none
+          h3
+            display: none
+
     h3
       float: left
       margin: 0
-      font-size: 1rem
+      font-size: 0.8em
+      color: $color_sub_light
+      font-weight: normal
+      &:hover
+        color: $color_main
     .message-date
+      font-size: 0.8em
       float: right
-      color: $color_sub
+      color: $color_sub_light
+      &:hover
+        color: $color_main
     p
-      margin-bottom: 1rem
       clear: both
+      margin: 0
 
     form
       padding: 1rem
@@ -153,7 +173,7 @@ body
             cursor: pointer
             &:hover
               color: $color_sub
-          input[type=submit]
+          button
             +button($color_main, #fff)
 
           border-left: $border_width dotted $color_border_light

@@ -8,6 +8,7 @@ html[ ng-app='resonanz' ]
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = yield(:head) if content_for?(:head)
+    meta[name="language" content="#{I18n.locale}"]
 
   body[ng-init='currentUser=#{render_for_api(current_user)}']
     header

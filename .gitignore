@@ -31,4 +31,9 @@ vendor/assets/components/fastclick/*
 vendor/assets/components/normalize-css/*
 !vendor/assets/components/normalize-css/normalize.css
 
+# moment
+vendor/assets/components/moment/*
+!vendor/assets/components/moment/moment.js
+!vendor/assets/components/moment/min/lang/ru.js
+
 .idea

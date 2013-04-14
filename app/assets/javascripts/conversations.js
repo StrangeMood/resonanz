@@ -45,6 +45,35 @@ function ConversationCtrl($scope) {
     $scope._ws = ws
   }
 
+  $scope.isMine = function(message) {
+    if (message.author.id == $scope.currentUser.id) return 'mine'
+  }
+
+  $scope.messageType = function(message, previous) {
+    // merge messages from one author
+    if (previous) {
+      var before = moment(previous.created_at),
+        after = moment(message.created_at)
+
+      if (message.author.id == previous.author.id && before.dayOfYear() == after.dayOfYear())
+        return 'merged'
+    }
+  }
+
+  $scope.daySeparator = function(message, previous) {
+    // separate messages written in different days
+    if (previous) {
+      var before = moment(previous.created_at),
+        after = moment(message.created_at)
+
+      if (before.dayOfYear() != after.dayOfYear()) {
+        return message.created_at
+      }
+    } else {
+      return message.created_at
+    }
+  }
+
   $scope.addMessage = function() {
     if ($scope.message.text) {
       $scope._ws.send(JSON.stringify({text: $scope.message.text}))

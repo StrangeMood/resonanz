@@ -4,10 +4,12 @@
 section.conversation[ng-controller='ConversationCtrl' ng-init="conversation=#{render_for_api(conversation)}"]
   - current_messages = render_for_api(conversation.messages)
   ul.messages[ng-init="messages=#{current_messages}"]
-    li[ng-repeat='message in messages']
+    li[ng-repeat="message in messages"
+       class="{{isMine(message)}} {{messageType(message, messages[$index-1])}}"]
       h3.author {{message.author.name}}
-      .message-date {{message.created_at | date:'medium'}}
-      p {{message.text}}
+      p
+        .message-date {{message.created_at | moment:'time'}}
+        | {{message.text}}
     li#follow
 
   form[ng-submit='addMessage()']
@@ -20,4 +22,5 @@ section.conversation[ng-controller='ConversationCtrl' ng-init="conversation=#{re
             = t('conversations.send_by_enter')
             | &nbsp
             input[type='checkbox' ng-model='submitOnEnter' ng-change='writeUserSettings()' ng-disabled='disconnected']
-          input[type='submit' value='#{t('conversations.send')}' ng-disabled='disconnected' ng-hide='submitOnEnter']
+          button[ng-disabled='disconnected' ng-hide='submitOnEnter']
+            = t('conversations.send')

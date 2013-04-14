@@ -5,6 +5,7 @@
     "jquery.cookie": "latest",
     "font-awesome": "latest",
     "fastclick": "latest",
-    "normalize-css": "latest"
+    "normalize-css": "latest",
+    "moment": "latest"
   }
 }
