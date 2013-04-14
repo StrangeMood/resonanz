@@ -27,4 +27,8 @@ vendor/assets/components/jquery.cookie/*
 vendor/assets/components/fastclick/*
 !vendor/assets/components/fastclick/lib
 
+# normalize.css
+vendor/assets/components/normalize-css/*
+!vendor/assets/components/normalize-css/normalize.css
+
 .idea
