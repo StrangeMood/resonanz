@@ -16,9 +16,13 @@ Nothing special at the moment... Just another one test field for me as a Ruby/Ra
 
 
 ## TODO
-- timestamps beatification
 - conversations hashtag editing
 - creating new conversations
 - reply to person feature
 - small screen design
 - images upload
+- vnni locale
+	- vnni sees all interface text without vowels
+	- all messages from vnni looses vowels, other users see broken messages
+- write chef provisioning scripts
+- deploy to digital ocean
