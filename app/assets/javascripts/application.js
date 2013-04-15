@@ -4,7 +4,6 @@
 //= require moment/min/lang/ru
 
 //= require jquery/jquery
-//= require angular/angular
 //= require jquery.cookie/jquery.cookie
 
 var app = angular.module('resonanz', []);
