@@ -3,7 +3,7 @@ module HaikuNames
   NOUNS = %w(waterfall river breeze moon rain wind sea morning snow lake sunset pine shadow leaf dawn glitter forest hill cloud meadow sun glade bird brook butterfly bush dew dust field fire flower firefly feather grass haze mountain night pond darkness snowflake silence sound sky shape surf thunder violet water wildflower wave water resonance sun wood dream cherry tree fog frost voice paper frog smoke star)
 
   def haiku_name
-    name = "#{ADJECTIVES.sample.capitalize} #{NOUNS.sample.capitalize} #{rand(64)+1}"
+    name = "#{ADJECTIVES.sample.capitalize} #{NOUNS.sample.capitalize}"
     self.class.exists?(name: name) ? haiku_name : name
   end
 end
