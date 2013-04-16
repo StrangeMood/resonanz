@@ -21,26 +21,23 @@ body>header
   ul
     float: right
     list-style-type: none
-    padding: 0
+    padding: 0.5rem 0 0.3rem 0
     margin: 0
-    height: 2rem
 
     li
-      float: left
-      margin: 0.5em 0
+      display: inline-block
+      //margin: 0.5em 0
       &:nth-child(n+2)
         margin-left: 0.5em
         padding-left: 0.5em
         border-left: $border_width solid $color_main
 
     ul
-      height: 1.25rem
+      float: none
+      padding: 0
       li
-        margin: 0
+        //margin: 0
         &:nth-child(n+2)
           margin-left: 0.25em
           padding-left: 0.25em
           border-left: $border_width dotted $color_main
-
-  .locale strong
-    font-weight: bolder
