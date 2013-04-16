@@ -12,7 +12,7 @@ section.conversation[ng-controller='ConversationCtrl' ng-init="conversation=#{re
         a {{message.author.name}}
       p
         time {{message.created_at | moment:'time'}}
-        | {{message.text}}
+        message-body {{message.text}}
     li#follow
 
   form[ng-submit='addMessage()']
