@@ -1,4 +1,5 @@
 //= require conversations_list
+//= require height_corrector
 
 function ConversationCtrl($scope) {
   $scope.disconnected = true

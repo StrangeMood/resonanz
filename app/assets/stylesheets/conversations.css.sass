@@ -1,42 +1,19 @@
 @import globals
 @import mixins
 
-@import compass/css3/box
-@import compass/css3/transform
-
-// layout
-html, body
-  height: 100%
-
-body
-  +display-box
-  +box-orient(vertical)
-  +box-align(stretch)
-
 #main
-  +box-flex(1)
-  +display-box
-  +box-orient(horizontal)
-  +box-align(stretch)
-  width: 100%
   nav
-    max-width: 18rem
-    min-width: 18rem
+    float: left
+    width: 20rem
     border-right: $border_width solid $color_border
     border-left:  $border_width solid $color_border
   section.conversation
-    +box-flex(1)
-
-    +display-box
-    +box-orient(vertical)
-    +box-align(stretch)
-
+    float: left
+    width: 40rem - 4*$border_width
     border-right: $border_width solid $color_border
     border-left:  $border_width solid $color_border
     .messages
-      +box-flex(1)
       overflow: auto
-
 
 #main
   nav
@@ -52,11 +29,11 @@ body
         position: relative
         // triangle
         &:after
-          +rotate(45deg)
+          transform: rotate(45deg)
           position: absolute
-          right: - (sqrt(2rem) / 2 - $border_width)
+          right: - (1.4rem / 2 - $border_width)
           top: 50%
-          margin-top: - (sqrt(2rem) / 2 - $border_width)
+          margin-top: - (1.4rem / 2 - $border_width)
           content: '.'
           display: block
           width: 1rem
