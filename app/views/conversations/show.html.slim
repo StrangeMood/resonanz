@@ -18,12 +18,10 @@ section.conversation[ng-controller='ConversationCtrl' ng-init="conversation=#{re
   form[ng-submit='addMessage()']
     .edit-area[ng-class='{disabled:disconnected}']
       .text-area
-        textarea[on-keyup='textAreaKeypress' ng-model='message.text' rows='3' ng-disabled='disconnected' placeholder='#{t('conversations.text_placeholder')}']
+        textarea[on-enter-keypress='addMessage()' ng-model='message.text' rows='3' ng-disabled='disconnected' placeholder='#{t('conversations.text_placeholder')}']
       .controls
         .submit
           label
             = t('conversations.send_by_enter')
-            | &nbsp
-            input[type='checkbox' ng-model='submitOnEnter' ng-change='writeUserSettings()' ng-disabled='disconnected']
           button[ng-disabled='disconnected' ng-hide='submitOnEnter']
             = t('conversations.send')

@@ -3,7 +3,7 @@
 function ConversationCtrl($scope) {
   $scope.disconnected = true
 
-  $scope.submitOnEnter = $.cookie('submit_on_enter') == '1'
+  $scope.message = ''
 
   $('.conversation .messages').on('scroll', function(e) {
     if (this.scrollHeight - this.scrollTop === this.clientHeight) {
@@ -82,16 +82,6 @@ function ConversationCtrl($scope) {
       $scope._ws.send(JSON.stringify({text: $scope.message.text}))
       $scope.message.text = ''
     }
-  }
-
-  $scope.textAreaKeypress = function(e) {
-    if (e.which == 13 && $scope.submitOnEnter) {
-      $scope.addMessage()
-    }
-  }
-
-  $scope.writeUserSettings = function() {
-    $.cookie('submit_on_enter', ($scope.submitOnEnter ? '1' : '0'), {path: '/'})
   }
 
   // postpone connection establishment while initialisation finished
