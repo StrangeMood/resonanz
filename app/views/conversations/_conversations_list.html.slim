@@ -11,4 +11,6 @@ ul[ng-controller='ConversationsListCtrl']
             span= conversation.last_message.text
         - else
           .last-message
+            .actions
+              i.icon-trash[data-tooltip='#{t('conversations.delete')}' ng-click='removeConversation']
             span  &nbsp
