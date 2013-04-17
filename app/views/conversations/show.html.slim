@@ -15,8 +15,16 @@ section.conversation[ng-controller='ConversationCtrl' ng-init="conversation=#{re
         message-body {{message.text}}
     li#follow
 
-  form[ng-submit='addMessage()']
-    .edit-area[ng-class='{disabled:disconnected}']
+  form[]
+    .code-edit-area.edit-area[ng-class='{disabled:disconnected}']
+      .text-area
+        textarea[ng-model='message.text' rows='3' ng-disabled='disconnected']
+      .controls
+        .submit
+          button[ng-disabled='disconnected' ng-hide='submitOnEnter']
+            = t('conversations.send')
+
+    .text-edit-area.edit-area[ng-class='{disabled:disconnected}']
       .text-area
         textarea[on-enter-keypress='addMessage()' ng-model='message.text' rows='3' ng-disabled='disconnected' placeholder='#{t('conversations.text_placeholder')}']
       .controls
