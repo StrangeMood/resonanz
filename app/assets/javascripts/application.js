@@ -5,6 +5,7 @@
 
 //= require jquery/jquery
 //= require jquery.cookie/jquery.cookie
+//= require autogrow-textarea/jquery.autogrowtextarea
 
 var app = angular.module('resonanz', []);
 

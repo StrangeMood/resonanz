@@ -6,6 +6,7 @@
     "font-awesome": "latest",
     "fastclick": "latest",
     "normalize-css": "latest",
-    "moment": "latest"
+    "moment": "latest",
+    "autogrow-textarea": "latest"
   }
 }

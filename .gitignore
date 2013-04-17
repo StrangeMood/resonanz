@@ -36,4 +36,8 @@ vendor/assets/components/moment/*
 !vendor/assets/components/moment/moment.js
 !vendor/assets/components/moment/min/lang/ru.js
 
+# autogrow
+vendor/assets/components/autogrow-textarea/*
+!vendor/assets/components/autogrow-textarea/jquery.autogrowtextarea.js
+
 .idea
