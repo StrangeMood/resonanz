@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('ready page:load', function() {
   function correctHeight() {
     var windowHeight = $(window).height()
     var headerHeight = $('body header').outerHeight()

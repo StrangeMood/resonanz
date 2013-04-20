@@ -1,3 +1,4 @@
+//= require turbolinks
 //= require fastclick/lib/fastclick
 
 //= require moment/moment
@@ -58,7 +59,9 @@ app.filter('markdown', function() {
   }
 )
 
-$(function() {
+$(document).on('ready page:load', function() {
+  angular.bootstrap(document, ['resonanz'])
+
   window.currentLocale = $('meta[name=language]').attr('content')
   moment.lang(window.currentLocale)
 })
