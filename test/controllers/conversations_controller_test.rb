@@ -35,4 +35,13 @@ class ConversationsControllerTest < ActionController::TestCase
     end
   end
 
+  test 'GET request for non existent slug creates new conversation' do
+    @controller.stub(:current_user, @user1) do
+      get(:show, id: 'joppadriller')
+
+      assert response.success?
+      assert_includes @user1.conversations.pluck(:slug), 'joppadriller'
+    end
+  end
+
 end
