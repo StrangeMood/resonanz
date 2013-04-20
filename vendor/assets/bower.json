@@ -7,6 +7,7 @@
     "fastclick": "latest",
     "normalize-css": "latest",
     "moment": "latest",
-    "autogrow-textarea": "latest"
+    "autogrow-textarea": "latest",
+    "showdown": "main"
   }
 }

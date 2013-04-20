@@ -3,8 +3,12 @@ html[ ng-app='resonanz' ]
   head
     title Resonanz
     = stylesheet_link_tag 'application'
+    = yield(:css) if content_for?(:css)
+
     = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js'
     = javascript_include_tag 'application'
+    = yield(:javascript) if content_for?(:javascript)
+
     = yield(:head) if content_for?(:head)
     meta[name="language" content="#{I18n.locale}"]
 

@@ -84,60 +84,94 @@
     padding: 0
     height: 0
 
-  section.conversation
-    ul
-      list-style-type: none
-      margin: 0
-      padding: 0
-      li
-        padding: 0.5rem 1rem 0.5rem 1rem
-        border-top: $border_width solid $color_background
-        &.mine
-          background-color: $color_background_light
-        &.merged
-          border-top: none
-          h3
-            display: none
-        &.separated:before
-          content: attr(data-day-separator)
-          display: block
-          text-align: center
-          margin-bottom: 0.5rem
-          text-transform: capitalize
-          color: $color_sub_light
-          font-size: 0.8em
-    h3
-      float: left
-      margin: 0
-      font-size: 0.8em
-      color: $color_sub_light
-      font-weight: normal
-      a
-        cursor: pointer
-        &:hover
-          color: $color_main
-        &:first-child
-          padding-right: 0.5em
-          margin-right: 0.5em
-          border-right: $border_width dotted $color_sub_light
+section.conversation
+  ul
+    list-style-type: none
+    margin: 0
+    padding: 0
 
-    time
-      margin-right: -3.5em
-      font-size: 0.8em
-      float: right
-      color: $color_sub_light
-      text-transform: lowercase
+  form
+    padding: 1rem
+    background-color: $color_background
+
+    border-top: $border_width solid $color_border_light
+
+// MESSAGE STYLING
+
+.message
+  padding: 0.5rem 1rem 0.5rem 1rem
+  border-top: $border_width solid $color_background
+  &.mine
+    background-color: $color_background_light
+  &.merged
+    border-top: none
+    h3
+      display: none
+  &.separated:before
+    content: attr(data-day-separator)
+    display: block
+    text-align: center
+    margin-bottom: 0.5rem
+    text-transform: capitalize
+    color: $color_sub_light
+    font-size: 0.8em
+
+  h3
+    margin: 0
+    font-size: 0.8em
+    color: $color_sub_light
+    font-weight: normal
+    a
+      cursor: pointer
       &:hover
         color: $color_main
+      &:first-child
+        padding-right: 0.5em
+        margin-right: 0.5em
+        border-right: $border_width dotted $color_sub_light
+
+  time
+    margin-right: -3.5em
+    font-size: 0.8em
+    float: right
+    color: $color_sub_light
+    text-transform: lowercase
+    &:hover
+      color: $color_main
+
+  // CODE
+  .message-body
+    clear: both
+    p code, pre
+      background-color: $color_background_light
+      border: $border_width solid $color_background
+
+    p code
+      padding: 0.1em
+    pre
+      margin: 0.3em 0 0 0
+      display: block
+      padding: 0.1em 0.2em
+  &.mine
+    .message-body
+      p code, pre
+        background-color: $color_background
+        border: $border_width solid $color_border_light
+        font-family: $font_monospace
+
+  .message-body
+    margin: 0
+    padding-right: 3em
+
+    // LISTS
+    ul, ol
+      list-style-position: inside
+      padding: 0 0 0 0.5em
+    ul
+      list-style-type: disc
+
+    // PARAGRAPHS
     p
-      clear: both
       margin: 0
-      padding-right: 3em
-      message-body
-        white-space: pre-line
-
-    form
-      padding: 1rem
-      background-color: $color_background
-
-      border-top: $border_width solid $color_border_light
+    .text p
+      white-space: pre-line

@@ -4,32 +4,24 @@
 section.conversation[ng-controller='ConversationCtrl' ng-init="conversation=#{render_for_api(conversation)}"]
   - current_messages = render_for_api(conversation.messages)
   ul.messages[ng-init="messages=#{current_messages}"]
-    li[ng-repeat="message in messages"
+    li.message[ng-repeat="message in messages"
        class="{{isMine(message)}} {{messageType(message, messages[$index-1])}}"
        data-day-separator="{{daySeparator(message, messages[$index-1]) | moment:'day'}}"]
       h3
         a[name="{{message.id}}"] {{message.id}}
         a {{message.author.name}}
-      p
+      .message-body
         time {{message.created_at | moment:'time'}}
-        message-body {{message.text}}
+        .text[ng-bind-html-unsafe='message.text | markdown']
     li#follow
 
-  form[]
-    .code-edit-area.edit-area[ng-class='{disabled:disconnected}']
-      .text-area
-        textarea[ng-model='message.text' rows='3' ng-disabled='disconnected']
-      .controls
-        .submit
-          button[ng-disabled='disconnected' ng-hide='submitOnEnter']
-            = t('conversations.send')
-
-    .text-edit-area.edit-area[ng-class='{disabled:disconnected}']
+  form[ng-submit='addMessage()']
+    .edit-area[ng-class='{disabled:disconnected}']
       .text-area
         textarea[on-enter-keypress='addMessage()' ng-model='message.text' rows='3' ng-disabled='disconnected' placeholder='#{t('conversations.text_placeholder')}']
       .controls
         .submit
           label
             = t('conversations.send_by_enter')
-          button[ng-disabled='disconnected' ng-hide='submitOnEnter']
+          button[ng-disabled='disconnected']
             = t('conversations.send')

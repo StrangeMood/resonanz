@@ -20,7 +20,7 @@ $(function() {
     }
   }
 
-  $('.conversation textarea')
+  $('.text-area textarea')
     .on('keyup', function() { setTimeout(correctHeight, 0) })
     .autoGrow()
 

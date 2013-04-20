@@ -1,5 +1,6 @@
 //= require conversations_list
 //= require height_corrector
+//= require autogrow-textarea/jquery.autogrowtextarea
 
 function ConversationCtrl($scope) {
   $scope.disconnected = true

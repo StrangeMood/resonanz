@@ -1,6 +1,5 @@
-- content_for(:head) do
-  = stylesheet_link_tag('conversations')
-  = javascript_include_tag('conversations')
+- content_for(:css, stylesheet_link_tag('conversations'))
+- content_for(:javascript, javascript_include_tag('conversations'))
 
 - content_for(:main) do
   - if content_for?(:conversations_list)

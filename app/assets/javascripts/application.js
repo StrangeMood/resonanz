@@ -5,7 +5,8 @@
 
 //= require jquery/jquery
 //= require jquery.cookie/jquery.cookie
-//= require autogrow-textarea/jquery.autogrowtextarea
+
+//= require showdown/src/showdown
 
 var app = angular.module('resonanz', []);
 
@@ -13,7 +14,7 @@ app.directive('onEnterKeypress', function() {
   return function(scope, elm, attrs) {
     elm.bind('keydown', function(evt) {
       evt = jQuery.event.fix(evt)
-      if(evt.which == 13 && !(evt.metaKey || evt.ctrlKey || evt.altKey)) {
+      if (evt.which == 13 && !(evt.metaKey || evt.ctrlKey || evt.altKey)) {
         evt.preventDefault()
         scope.$apply(attrs.onEnterKeypress)
       }
@@ -42,6 +43,17 @@ app.filter('moment', function() {
             return date.format(type)
         }
       }
+    }
+  }
+)
+
+app.filter('markdown', function() {
+    var converter = new Showdown.converter()
+
+    return function(text) {
+      if (!text) return
+
+      return converter.makeHtml(text)
     }
   }
 )

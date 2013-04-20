@@ -44,4 +44,12 @@ vendor/assets/components/moment/*
 vendor/assets/components/autogrow-textarea/*
 !vendor/assets/components/autogrow-textarea/jquery.autogrowtextarea.js
 
+# showdown
+vendor/assets/components/showdown/*
+!vendor/assets/components/showdown/src/
+
+# ace
+vendor/assets/components/ace/*
+!vendor/assets/components/ace/build/src/ace.js
+
 .idea
