@@ -21,8 +21,8 @@ Nothing special at the moment... Just another one test field for me as a Ruby/Ra
 - reply to person feature
 - small screen design
 - images upload
+- write chef provisioning scripts
+- deploy to digital ocean
 - vnni locale
 	- vnni sees all interface text without vowels
 	- all messages from vnni looses vowels, other users see broken messages
-- write chef provisioning scripts
-- deploy to digital ocean
