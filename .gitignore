@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# ignore virtualenv
+realtime/env
+
 # jquery
 vendor/assets/components/jquery/*
 !vendor/assets/components/jquery/jquery.js

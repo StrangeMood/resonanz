@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130324095325) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "conversations", force: true do |t|
     t.string   "slug"
     t.boolean  "is_public",  default: true
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20130324095325) do
     t.datetime "updated_at"
   end
 
-  add_index "conversations", ["slug"], name: "index_conversations_on_slug", unique: true
+  add_index "conversations", ["slug"], name: "index_conversations_on_slug", unique: true, using: :btree
 
   create_table "messages", force: true do |t|
     t.text     "text"
@@ -38,9 +41,9 @@ ActiveRecord::Schema.define(version: 20130324095325) do
     t.datetime "updated_at"
   end
 
-  add_index "user_conversations", ["conversation_id"], name: "index_user_conversations_on_conversation_id"
-  add_index "user_conversations", ["start_from"], name: "index_user_conversations_on_start_from"
-  add_index "user_conversations", ["user_id"], name: "index_user_conversations_on_user_id"
+  add_index "user_conversations", ["conversation_id"], name: "index_user_conversations_on_conversation_id", using: :btree
+  add_index "user_conversations", ["start_from"], name: "index_user_conversations_on_start_from", using: :btree
+  add_index "user_conversations", ["user_id"], name: "index_user_conversations_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

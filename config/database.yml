@@ -1,8 +1,8 @@
 development: &defaults
   adapter: postgresql
   host: localhost
-  encoding: unicode
   database: resonanz_development
+  encoding: unicode
   pool: 5
   username: postgres
   password:
